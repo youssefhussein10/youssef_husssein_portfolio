@@ -1,0 +1,1426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Youssef Hussein - Security Professional</title>
+    <!-- Ensure Font Awesome loads properly -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        /* Variables */
+        :root {
+            --main-bg: #0a0e14;
+            --secondary-bg: #12161f;
+            --accent: #64d9ff;
+            --accent-hover: #00a3ff;
+            --text: #e0e0e0;
+            --headers: #ffffff;
+            --border: #2c3544;
+            --card-bg: #181e29;
+        }
+        
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--main-bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        header {
+            background-color: rgba(10, 14, 20, 0.95);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid var(--border);
+            padding: 15px 0;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.7rem;
+            font-weight: bold;
+            color: var(--headers);
+            text-decoration: none;
+        }
+        
+        .logo span {
+            color: var(--accent);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-size: 1rem;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--accent);
+        }
+        
+        .menu-toggle {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: var(--text);
+        }
+        
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background-color: var(--main-bg);
+            padding-top: 80px;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            color: var(--headers);
+        }
+        
+        .hero h1 span {
+            color: var(--accent);
+            display: block;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            border-radius: 5px;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: all 0.3s;
+            margin: 10px;
+        }
+        
+        .btn-primary {
+            background-color: var(--accent);
+            color: var(--secondary-bg);
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--accent-hover);
+        }
+        
+        .btn-secondary {
+            border: 2px solid var(--accent);
+            color: var(--accent);
+            background: transparent;
+        }
+        
+        .btn-secondary:hover {
+            background-color: rgba(100, 217, 255, 0.1);
+        }
+        
+        .socials {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+            gap: 15px;
+        }
+        
+        .social-link {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--secondary-bg);
+            color: var(--accent);
+            font-size: 1.2rem;
+            text-decoration: none;
+            transition: all 0.3s;
+            border: 1px solid var(--border);
+            margin: 0 5px;
+        }
+        
+        .social-link:hover {
+            transform: translateY(-5px);
+            color: var(--secondary-bg);
+            background-color: var(--accent);
+        }
+        
+        /* Tabs System */
+        .main-content {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--headers);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background-color: var(--accent);
+        }
+        
+        .section-title p {
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .tabs-container {
+            background-color: var(--secondary-bg);
+            border-radius: 10px;
+            overflow: hidden;
+            margin-top: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            border: 1px solid var(--border);
+        }
+        
+        .tabs-nav {
+            display: flex;
+            background-color: var(--card-bg);
+            border-bottom: 1px solid var(--border);
+            overflow-x: auto;
+        }
+        
+        .tab-btn {
+            padding: 15px 25px;
+            background: none;
+            border: none;
+            color: var(--text);
+            font-family: inherit;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            white-space: nowrap;
+            position: relative;
+        }
+        
+        .tab-btn.active {
+            color: var(--accent);
+        }
+        
+        .tab-btn::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background-color: var(--accent);
+            transition: width 0.3s;
+        }
+        
+        .tab-btn.active::after {
+            width: 100%;
+        }
+        
+        .tab-content {
+            display: none;
+            padding: 30px;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        /* About Section */
+        .about {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+        
+        .about-content {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .about-content h3 {
+            font-size: 2rem;
+            color: var(--accent);
+            margin-bottom: 20px;
+        }
+        
+        .about-content p {
+            margin-bottom: 15px;
+        }
+        
+        .about-content ul {
+            list-style: none;
+            margin-top: 20px;
+        }
+        
+        .about-content ul li {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .about-content ul li i {
+            color: var(--accent);
+            margin-right: 10px;
+        }
+        
+        .terminal-container {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .terminal {
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            padding: 20px;
+            border: 1px solid var(--border);
+        }
+        
+        .terminal-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .terminal-btn {
+            height: 12px;
+            width: 12px;
+            border-radius: 50%;
+            margin-right: 8px;
+        }
+        
+        .red-btn {
+            background-color: #ff5f56;
+        }
+        
+        .yellow-btn {
+            background-color: #ffbd2e;
+        }
+        
+        .green-btn {
+            background-color: #27c93f;
+        }
+        
+        .terminal-title {
+            flex-grow: 1;
+            text-align: center;
+            font-size: 0.9rem;
+            color: var(--text);
+        }
+        
+        .terminal-body {
+            font-family: monospace;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+        
+        .command {
+            display: flex;
+            margin-bottom: 10px;
+        }
+        
+        .command-prompt {
+            color: var(--accent);
+            margin-right: 10px;
+            white-space: nowrap;
+        }
+        
+        .response {
+            margin-bottom: 15px;
+            color: var(--text);
+        }
+        
+        /* Skills Section */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .skill-card {
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            padding: 25px;
+            border: 1px solid var(--border);
+            transition: all 0.3s;
+            height: 100%;
+        }
+        
+        .skill-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            border-color: var(--accent);
+        }
+        
+        .skill-icon {
+            font-size: 2.5rem;
+            color: var(--accent);
+            margin-bottom: 20px;
+        }
+        
+        .skill-card h3 {
+            font-size: 1.5rem;
+            color: var(--headers);
+            margin-bottom: 15px;
+        }
+        
+        .skill-list {
+            list-style: none;
+        }
+        
+        .skill-list li {
+            padding: 8px 0;
+            border-bottom: 1px dashed var(--border);
+        }
+        
+        .skill-list li:last-child {
+            border-bottom: none;
+        }
+        
+        /* Experience Section */
+        .experience-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .exp-item {
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            padding: 25px;
+            border: 1px solid var(--border);
+            margin-bottom: 30px;
+            transition: all 0.3s;
+        }
+        
+        .exp-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            border-color: var(--accent);
+        }
+        
+        .exp-title {
+            color: var(--accent);
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+        
+        .exp-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .exp-company {
+            color: var(--headers);
+        }
+        
+        .exp-date {
+            color: var(--accent);
+            font-style: italic;
+        }
+        
+        /* Projects Section */
+        .projects-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+        .project-card {
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            transition: all 0.3s;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            border-color: var(--accent);
+        }
+        
+        .project-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .project-info {
+            padding: 25px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .project-info h3 {
+            color: var(--headers);
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+        }
+        
+        .project-info p {
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+        
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+            gap: 8px;
+        }
+        
+        .project-tag {
+            background-color: rgba(100, 217, 255, 0.1);
+            color: var(--accent);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+        
+        .project-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .project-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .project-links a:hover {
+            color: var(--accent);
+        }
+        
+        .project-links a i {
+            margin-right: 8px;
+        }
+        
+        /* Achievements Section */
+        .achievements-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+        .achievement-card {
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            padding: 30px;
+            border: 1px solid var(--border);
+            transition: all 0.3s;
+            height: 100%;
+        }
+        
+        .achievement-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            border-color: var(--accent);
+        }
+        
+        .achievement-icon {
+            font-size: 2.5rem;
+            color: var(--accent);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .achievement-title {
+            color: var(--headers);
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+            font-weight: bold;
+            text-align: center;
+        }
+        
+        .achievement-desc {
+            text-align: center;
+        }
+        
+        /* Contact Section */
+        .contact {
+            padding: 80px 0;
+            background-color: var(--secondary-bg);
+        }
+        
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 50px;
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+        }
+        
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: rgba(100, 217, 255, 0.1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 20px;
+            font-size: 1.2rem;
+            color: var(--accent);
+        }
+        
+        .contact-text h3 {
+            font-size: 1.2rem;
+            color: var(--headers);
+            margin-bottom: 5px;
+        }
+        
+        .contact-text a {
+            color: var(--text);
+            text-decoration: none;
+        }
+        
+        .contact-text a:hover {
+            color: var(--accent);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--card-bg);
+            text-align: center;
+            padding: 40px 0 20px;
+            border-top: 1px solid var(--border);
+        }
+        
+        .footer-logo {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--headers);
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+        
+        .footer-logo span {
+            color: var(--accent);
+        }
+        
+        .footer-social {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+            gap: 15px;
+        }
+        
+        .footer-text {
+            margin-bottom: 20px;
+        }
+        
+        .copyright {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background-color: var(--secondary-bg);
+                flex-direction: column;
+                align-items: center;
+                padding: 20px 0;
+            }
+            
+            .nav-links.show {
+                display: flex;
+            }
+            
+            .nav-links li {
+                margin: 10px 0;
+            }
+            
+            .menu-toggle {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .about {
+                flex-direction: column;
+            }
+            
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .projects-container,
+            .achievements-container,
+            .skills-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .tabs-nav {
+                flex-wrap: wrap;
+            }
+            
+            .tab-btn {
+                padding: 10px 15px;
+            }
+        }
+    
+.tab-content {
+    scroll-margin-top: 100px;
+}
+
+</style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#" class="logo">Youssef<span>Hussein</span></a>
+                <ul class="nav-links">
+                    <li><a href="#" class="active">Home</a></li>
+                    <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <div class="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Offensive <span>Security Professional</span></h1>
+                <p>Specializing in web, network, and mobile penetration testing. Discovering vulnerabilities, exploiting systems, and securing digital assets.</p>
+                <div>
+                    <a href="#portfolio" class="btn btn-primary">View My Portfolio</a>
+                    <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+                </div>
+                <div class="socials">
+                    <a href="https://github.com/youssefhussein10" target="_blank" class="social-link">
+                        <i class="fab fa-github" style="font-size: 1.5rem;"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/youssef-hussein-a81704231" target="_blank" class="social-link">
+                        <i class="fab fa-linkedin-in" style="font-size: 1.5rem;"></i>
+                    </a>
+                    <a href="https://medium.com/@youssefhussein212103168" target="_blank" class="social-link">
+                        <i class="fab fa-medium-m" style="font-size: 1.5rem;"></i>
+                    </a>
+                    <a href="https://hackerone.com/syncho?type=user" target="_blank" class="social-link">
+                        <i class="fab fa-hackerrank" style="font-size: 1.5rem;"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section class="main-content" id="portfolio">
+        <div class="container">
+            <div class="section-title">
+                <h2>My Portfolio</h2>
+                <p>Explore my expertise, achievements, and experience in offensive security</p>
+            </div>
+            
+            <div class="tabs-container">
+                <div class="tabs-nav">
+                    <button class="tab-btn active" data-tab="about">About Me</button>
+                    <button class="tab-btn" data-tab="skills">Skills</button>
+                    <button class="tab-btn" data-tab="experience">Experience</button>
+                    <button class="tab-btn" data-tab="projects">Projects</button>
+                    <button class="tab-btn" data-tab="achievements">Achievements</button>
+<button class="tab-btn" data-tab="cv">CV</button>
+<button class="tab-btn" data-tab="writeups">Writeups</button>
+
+                </div>
+                
+                <!-- About Tab -->
+                <div class="tab-content active" id="about-tab">
+                    <div class="about">
+                        <div class="about-content">
+                            <h3>Let me introduce myself</h3>
+                            <p>I'm an offensive security professional with a passion for discovering and exploiting vulnerabilities in web applications, networks, and mobile platforms. Currently pursuing a Bachelor's degree in Computer Science with a focus on Network Technology.</p>
+                            <p>My journey in cybersecurity began with a curiosity about how systems can be broken and secured. Today, I specialize in penetration testing, vulnerability assessment, and secure code review to help organizations strengthen their security posture.</p>
+                            <ul>
+                                <li><i class="fas fa-check-circle"></i> Experience in identifying and exploiting critical vulnerabilities</li>
+                                <li><i class="fas fa-check-circle"></i> Skilled in web, network, and mobile application security</li>
+                                <li><i class="fas fa-check-circle"></i> Recognized in MTN Group's Hall of Fame for security contributions</li>
+                                <li><i class="fas fa-check-circle"></i> Passionate about continuous learning and professional growth</li>
+                            </ul>
+                        </div>
+                        <div class="terminal-container">
+                            <div class="terminal">
+                                <div class="terminal-header">
+                                    <div class="terminal-btn red-btn"></div>
+                                    <div class="terminal-btn yellow-btn"></div>
+                                    <div class="terminal-btn green-btn"></div>
+                                    <div class="terminal-title">youssef@kali: ~/pentest</div>
+                                </div>
+                                <div class="terminal-body">
+                                    <div class="command">
+                                        <div class="command-prompt">root@kali:~#</div>
+                                        <div>whoami</div>
+                                    </div>
+                                    <div class="response">Youssef Hussein - Offensive Security Professional</div>
+                                    
+                                    <div class="command">
+                                        <div class="command-prompt">root@kali:~#</div>
+                                        <div>cat skills.txt</div>
+                                    </div>
+                                    <div class="response">
+                                        - Web Application Security: OWASP Top 10, XSS, SQL Injection<br>
+                                        - Network Security: Penetration Testing, Traffic Analysis<br>
+                                        - Mobile Security: Android Reverse Engineering, OWASP Mobile Top 10<br>
+                                        - Custom Exploit Development & Vulnerability Research
+                                    </div>
+                                    
+                                    <div class="command">
+                                        <div class="command-prompt">root@kali:~#</div>
+                                        <div>./find_vulnerabilities.sh</div>
+                                    </div>
+                                    <div class="response">Scanning target systems...<br>
+                                        [+] Account Takeover vulnerability discovered<br>
+                                        [+] API Information Disclosure detected<br>
+                                        [+] Price Manipulation vulnerability identified<br>
+                                        [+] Multiple XSS vectors found<br>
+                                        [+] Unauthorized PHPMyAdmin Access exposed
+                                    </div>
+                                    
+                                    <div class="command">
+                                        <div class="command-prompt">root@kali:~#</div>
+                                        <div>_</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Skills Tab -->
+                <div class="tab-content" id="skills-tab">
+                    <div class="skills-container">
+                        <div class="skill-card">
+                            <div class="skill-icon">
+                                <i class="fas fa-globe"></i>
+                            </div>
+                            <h3>Web Application Security</h3>
+                            <ul class="skill-list">
+                                <li>OWASP Top 10</li>
+                                <li>Secure Code Review</li>
+                                <li>XSS, SQL Injection</li>
+                                <li>Business Logic Abuse</li>
+                                <li>Authentication Bypass</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="skill-card">
+                            <div class="skill-icon">
+                                <i class="fas fa-network-wired"></i>
+                            </div>
+                            <h3>Network Security</h3>
+                            <ul class="skill-list">
+                                <li>Penetration Testing</li>
+                                <li>Protocol Exploitation</li>
+                                <li>Traffic Analysis</li>
+                                <li>Network Security Basics</li>
+                                <li>VPS Setup Management</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="skill-card">
+                            <div class="skill-icon">
+                                <i class="fas fa-mobile-alt"></i>
+                            </div>
+                            <h3>Mobile Security</h3>
+                            <ul class="skill-list">
+                                <li>Android Reverse Engineering</li>
+                                <li>OWASP Mobile Top 10</li>
+                                <li>Frida, Objection</li>
+                                <li>Mobile App Testing</li>
+                                <li>API Security</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="skill-card">
+                            <div class="skill-icon">
+                                <i class="fas fa-code"></i>
+                            </div>
+                            <h3>Programming & Scripting</h3>
+                            <ul class="skill-list">
+                                <li>Python, Bash</li>
+                                <li>JavaScript, PHP</li>
+                                <li>Custom Exploit Development</li>
+                                <li>Automation Tools</li>
+                                <li>Vulnerability Research</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="skill-card">
+                            <div class="skill-icon">
+                                <i class="fas fa-tools"></i>
+                            </div>
+                            <h3>Security Tools</h3>
+                            <ul class="skill-list">
+                                <li>Burp Suite</li>
+                                <li>Metasploit, Nmap</li>
+                                <li>Hydra, Wireshark</li>
+                                <li>Scapy</li>
+                                <li>Custom Security Frameworks</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="skill-card">
+                            <div class="skill-icon">
+                                <i class="fas fa-chess"></i>
+                            </div>
+                            <h3>Methodologies</h3>
+                            <ul class="skill-list">
+                                <li>Black/White Box Testing</li>
+                                <li>OSSTMM</li>
+                                <li>PTES</li>
+                                <li>Bug Bounty Hunting</li>
+                                <li>Risk Assessment</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Experience Tab -->
+
+                <div class="tab-content" id="experience-tab">
+                    <div class="experience-container">
+                        <div class="exp-item">
+                            <h3 class="exp-title">Freelance Penetration Tester</h3>
+                            <div class="exp-meta">
+                                <div class="exp-company">Independent Contractor</div>
+                                <div class="exp-date">Mar 2025</div>
+                            </div>
+                            <p>Performed a one-day penetration test on an e-commerce web application specializing in digital game sales. Identified 5 vulnerabilities including a critical stored XSS in the chat feature between buyers and sellers.</p>
+                        </div>
+                
+                        <div class="exp-item">
+                            <h3 class="exp-title">Bug Bounty Hunter</h3>
+                            <div class="exp-meta">
+                                <div class="exp-company">HackerOne</div>
+                                <div class="exp-date">Sep 2024 - Present</div>
+                            </div>
+                            <p>Actively hunting for security vulnerabilities on the HackerOne platform. Reported valid findings in public and private programs, continuously improving technical and analytical skills.</p>
+                        </div>
+                
+                        <div class="exp-item">
+                            <h3 class="exp-title">Freelance Penetration Tester</h3>
+                            <div class="exp-meta">
+                                <div class="exp-company">Independent Contractor</div>
+                                <div class="exp-date">Jan 2025 - Feb 2025</div>
+                            </div>
+                            <p>Conducted a full penetration test on a physical therapy platform, uncovering critical vulnerabilities including account takeover (ATO) via password reset flaws, pricing manipulation, and exposed API endpoints.</p>
+                        </div>
+                
+                        <div class="exp-item">
+                            <h3 class="exp-title">Application Penetration Tester</h3>
+                            <div class="exp-meta">
+                                <div class="exp-company">We Innovate - ZeroSploit, Cairo</div>
+                                <div class="exp-date">Aug 2024 - Oct 2024</div>
+                            </div>
+                            <p>Conducted web and mobile penetration tests, identified vulnerabilities, performed secure code reviews, and developed freelancing skills in security consulting.</p>
+                        </div>
+                
+                        <div class="exp-item">
+                            <h3 class="exp-title">Network Engineer</h3>
+                            <div class="exp-meta">
+                                <div class="exp-company">National Telecommunication Institute, Cairo</div>
+                                <div class="exp-date">Feb 2023 - Apr 2023</div>
+                            </div>
+                            <p>Configured and tested network devices in real and simulated environments, and participated in network security and project management workshops.</p>
+                        </div>
+                
+                        <div class="exp-item">
+                            <h3 class="exp-title">Computer Science Student</h3>
+                            <div class="exp-meta">
+                                <div class="exp-company">October 6 University</div>
+                                <div class="exp-date">2021 - 2025</div>
+                            </div>
+                            <p>Pursuing a Bachelor's degree in Computer Science with focus on Network Technology. Participating in cybersecurity competitions and self-learning through online platforms.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                
+                <!-- Projects Tab -->
+                <div class="tab-content" id="projects-tab">
+                    <div class="projects-container">
+                        <div class="project-card">
+                            <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c" alt="XSS Framework" class="project-img">
+                            <div class="project-info">
+                                <h3>0xs7s Framework</h3>
+                                <p>Automated XSS detection framework designed to identify cross-site scripting vulnerabilities in web applications with minimal false positives.</p>
+                                <div class="project-tags">
+                                    <span class="project-tag">Python</span>
+                                    <span class="project-tag">XSS</span>
+                                    <span class="project-tag">Web Security</span>
+                                </div>
+                                <div class="project-links">
+                                    <a href="https://github.com/youssefhussein10" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+                                    <a href="#"><i class="fas fa-external-link-alt"></i> Demo</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="project-card">
+                            <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3" alt="Saturn Security" class="project-img">
+                            <div class="project-info">
+                                <h3>Saturn Security Penetration Test</h3>
+                                <p>Comprehensive security assessment of a company's web platform, identifying critical vulnerabilities and providing remediation strategies.</p>
+                                <div class="project-tags">
+                                    <span class="project-tag">Web Security</span>
+                                    <span class="project-tag">Pentest</span>
+                                    <span class="project-tag">Documentation</span>
+                                </div>
+                                <div class="project-links">
+                                    <a href="#"><i class="fas fa-file-alt"></i> Report</a>
+                                    <a href="#"><i class="fas fa-external-link-alt"></i> Case Study</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="project-card">
+                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71" alt="Network Listener" class="project-img">
+                            <div class="project-info">
+                                <h3>Network Listener Tool</h3>
+                                <p>Custom-built tool for real-time traffic analysis using Python and Scapy, enabling network administrators to monitor and analyze traffic patterns efficiently.</p>
+                                <div class="project-tags">
+                                    <span class="project-tag">Python</span>
+                                    <span class="project-tag">Scapy</span>
+                                    <span class="project-tag">Network Security</span>
+                                </div>
+                                <div class="project-links">
+                                    <a href="https://github.com/youssefhussein10" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+                                    <a href="#"><i class="fas fa-book"></i> Documentation</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="project-card">
+                            <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48" alt="Gym Management" class="project-img">
+                            <div class="project-info">
+                                <h3>Gym Management System</h3>
+                                <p>Secure system for gym operations built with Flask and SQLite, featuring authentication, authorization, and secure data management principles.</p>
+                                <div class="project-tags">
+                                    <span class="project-tag">Flask</span>
+                                    <span class="project-tag">SQLite</span>
+                                    <span class="project-tag">Secure Dev</span>
+                                </div>
+                                <div class="project-links">
+                                    <a href="https://github.com/youssefhussein10" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+                                    <a href="#"><i class="fas fa-external-link-alt"></i> Demo</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Achievements Tab -->
+                <div class="tab-content" id="achievements-tab">
+                    <div class="achievements-container">
+                        <div class="achievement-card">
+                            <div class="achievement-icon">
+                                <i class="fas fa-trophy"></i>
+                            </div>
+                            <h3 class="achievement-title">MTN Group Hall of Fame</h3>
+                            <p class="achievement-desc">Recognized in MTN Group's Hall of Fame (2024, 2025) for discovering and reporting critical security vulnerabilities that helped protect user data and system integrity.</p>
+                        </div>
+                        
+                        <div class="achievement-card">
+                            <div class="achievement-icon">
+                                <i class="fas fa-database"></i>
+                            </div>
+                            <h3 class="achievement-title">PHPMyAdmin Access Vulnerability</h3>
+                            <p class="achievement-desc">Discovered unauthorized PHPMyAdmin Access vulnerability that exposed database root account privileges, potentially compromising entire systems and user data.</p>
+                        </div>
+                        
+                        <div class="achievement-card">
+                            <div class="achievement-icon">
+                                <i class="fas fa-folder-open"></i>
+                            </div>
+                            <h3 class="achievement-title">Index of Page Exposure</h3>
+                            <p class="achievement-desc">Identified Index of Page Exposure leaking developer credentials, passwords, and sensitive data due to security misconfigurations in multiple client environments.</p>
+                        </div>
+                        
+                        <div class="achievement-card">
+                            <div class="achievement-icon">
+                                <i class="fas fa-tag"></i>
+                            </div>
+                            <h3 class="achievement-title">Price Manipulation Vulnerability</h3>
+                            <p class="achievement-desc">Reported a critical Price Manipulation Vulnerability enabling unauthorized modification of product/service pricing, potentially leading to financial losses.</p>
+                        </div>
+                        
+                        <div class="achievement-card">
+                            <div class="achievement-icon">
+                                <i class="fas fa-code"></i>
+                            </div>
+                            <h3 class="achievement-title">XSS Vulnerabilities</h3>
+                            <p class="achievement-desc">Uncovered 5 XSS vulnerabilities across multiple web endpoints, improving client security awareness and preventing potential client-side attacks.</p>
+                        </div>
+                        
+                        <div class="achievement-card">
+                            <div class="achievement-icon">
+                                <i class="fas fa-comment-alt"></i>
+                            </div>
+                            <h3 class="achievement-title">Stored XSS in Chat Feature</h3>
+                            <p class="achievement-desc">Discovered and responsibly reported a critical stored XSS vulnerability in a web application's chat feature, allowing potential attackers to execute malicious JavaScript that would persist and affect multiple users.</p>
+                        </div>
+                        
+                        <div class="achievement-card">
+                            <div class="achievement-icon">
+                                <i class="fas fa-key"></i>
+                            </div>
+                            <h3 class="achievement-title">ATO via JWT Manipulation</h3>
+                            <p class="achievement-desc">Identified a critical Account Takeover (ATO) vulnerability in a password reset function by exploiting insecure JWT implementation, enabling unauthorized access to user accounts through token manipulation.</p>
+                        </div>
+                        
+                        <div class="achievement-card">
+                            <div class="achievement-icon">
+                                <i class="fas fa-key"></i>
+                            </div>
+                            <h3 class="achievement-title">API Information Disclosure</h3>
+                            <p class="achievement-desc">Discovered a critical API Information Disclosure flaw exposing sensitive user and internal data, potentially compromising confidentiality and leading to privacy breaches.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+            <!-- CV Tab -->
+<div class="tab-content" id="cv-tab">
+    <div style="text-align: center;">
+        <h3>Download My CV</h3>
+        <p>You can download my professional CV as a PDF document.</p>
+        <a href="Youssef_Hussein_Mohamed_CV (2).pdf" class="btn btn-primary" download>Download CV</a>
+    </div>
+</div>
+
+
+<!-- Writeups Tab Updated with Achievements Style -->
+<div class="tab-content " id="writeups-tab">
+    <div class="achievements-container">
+        <div class="achievement-card">
+            <div class="achievement-icon"><i class="fas fa-comment-alt"></i></div>
+            <h3 class="achievement-title">Stored XSS in Chat Feature</h3>
+            <p class="achievement-desc">
+                <a href="https://medium.com/@youssefhussein212103168/silent-sabotage-exploiting-stored-xss-in-a-chat-feature-71108606b10b" target="_blank">Read Article</a>
+            </p>
+        </div>
+        <div class="achievement-card">
+            <div class="achievement-icon"><i class="fas fa-database"></i></div>
+            <h3 class="achievement-title">PHPMyAdmin Unauthorized Access</h3>
+            <p class="achievement-desc">
+                <a href="https://medium.com/@youssefhussein212103168/critical-phpmyadmin-authentication-bypass-via-shodan-dorking-9bf664d053f7" target="_blank">Read Article</a>
+            </p>
+        </div>
+        <div class="achievement-card">
+            <div class="achievement-icon"><i class="fas fa-folder-open"></i></div>
+            <h3 class="achievement-title">Information Disclosure via GitHub Dorking</h3>
+            <p class="achievement-desc">
+                <a href="https://medium.com/@youssefhussein212103168/how-i-discovered-a-high-severity-information-disclosure-via-github-dorking-f2a781c0a63d" target="_blank">Read Article</a>
+            </p>
+        </div>
+        <div class="achievement-card">
+            <div class="achievement-icon"><i class="fas fa-code"></i></div>
+            <h3 class="achievement-title">5 XSS Vulnerabilities & Automated Scanner</h3>
+            <p class="achievement-desc">
+                <a href="https://medium.com/@youssefhussein212103168/how-i-discovered-5-xss-vulnerabilities-and-built-an-automated-xss-scanner-4b357423ae61" target="_blank">Read Article</a>
+            </p>
+        </div>
+        <div class="achievement-card">
+            <div class="achievement-icon"><i class="fas fa-mobile-alt"></i></div>
+            <h3 class="achievement-title">Insecure Shared Preferences in Android</h3>
+            <p class="achievement-desc">
+                <a href="https://medium.com/@youssefhussein212103168/bypassing-applock-pattern-via-shared-preferences-analysis-7bf1bb631dd3" target="_blank">Read Article</a>
+            </p>
+        </div>
+        <div class="achievement-card">
+            <div class="achievement-icon"><i class="fas fa-shield-alt"></i></div>
+            <h3 class="achievement-title">SQLi in Android App</h3>
+            <p class="achievement-desc">
+                <a href="https://medium.com/@youssefhussein212103168/android-application-penetration-testing-walkthrough-1cbb8cb50d47" target="_blank">Read Article</a>
+            </p>
+        </div>
+        <div class="achievement-card">
+            <div class="achievement-icon"><i class="fas fa-bolt"></i></div>
+            <h3 class="achievement-title">RCE in Android via File Scanner</h3>
+            <p class="achievement-desc">
+                <a href="https://medium.com/@youssefhussein212103168/exploiting-a-misconfigured-file-scanner-for-remote-code-execution-rce-in-android-4bb14fac6802" target="_blank">Read Article</a>
+            </p>
+        </div>
+        <div class="achievement-card">
+            <div class="achievement-icon"><i class="fas fa-wifi"></i></div>
+            <h3 class="achievement-title">Wi-Fi Encryption Downgrade Attack</h3>
+            <p class="achievement-desc">
+                <a href="https://medium.com/@youssefhussein212103168/exploiting-wifi-encryption-downgrade-for-sensitive-data-leaks-c14dcf709c10" target="_blank">Read Article</a>
+            </p>
+        </div>
+
+
+        <div class="achievement-card">
+            <div class="achievement-icon"><i class="fas fa-route"></i></div>
+            <h3 class="achievement-title">Bypassing Android SSL Pinning</h3>
+            <p class="achievement-desc">
+                <a href="https://medium.com/@youssefhussein212103168/bypass-android-ssl-pinning-using-objection-and-frida-fbc5644fa41f" target="_blank">Read Article</a>
+            </p>
+        </div>
+        <div class="achievement-card">
+            <div class="achievement-icon"><i class="fas fa-route"></i></div>
+            <h3 class="achievement-title">Zero click ATO in password reset</h3>
+            <p class="achievement-desc">
+                <a href="https://medium.com/@rezkshahin212103638/account-takeover-via-weak-jwt-validation-in-password-reset-functionality-2ca89fe8c940" target="_blank">Read Article</a>
+            </p>
+        </div>
+
+
+
+    </div>
+</div>
+
+
+
+
+
+    </section>
+
+
+
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Get In Touch</h2>
+                <p>Let's connect and discuss how we can collaborate</p>
+            </div>
+            
+            <div class="contact-container">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h3>Email</h3>
+                            <a href="mailto:youssefhusseindd@gmail.com">youssefhusseindd@gmail.com</a>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fab fa-linkedin"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h3>LinkedIn</h3>
+                            <a href="https://www.linkedin.com/in/youssef-hussein-a81704231" target="_blank">Youssef Hussein</a>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fab fa-github"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h3>GitHub</h3>
+                            <a href="https://github.com/youssefhussein10" target="_blank">youssefhussein10</a>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fab fa-medium"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h3>Medium</h3>
+                            <a href="https://medium.com/@youssefhussein212103168" target="_blank">@youssefhussein212103168</a>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fab fa-hackerrank"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h3>HackerOne</h3>
+                            <a href="https://hackerone.com/syncho?type=user" target="_blank">syncho</a>
+                        </div>
+                    </div>
+                </div>
+            
+
+
+
+
+
+
+<!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-logo">Youssef<span>Hussein</span></div>
+            <div class="footer-social">
+                <a href="https://github.com/youssefhussein10" target="_blank" class="social-link">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/youssef-hussein-a81704231" target="_blank" class="social-link">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="https://medium.com/@youssefhussein212103168" target="_blank" class="social-link">
+                    <i class="fab fa-medium"></i>
+                </a>
+                <a href="https://hackerone.com/syncho?type=user" target="_blank" class="social-link">
+                    <i class="fab fa-hackerrank"></i>
+                </a>
+            </div>
+            <p class="footer-text">Offensive security professional specializing in web, network, and mobile penetration testing.</p>
+            <p class="copyright">&copy; 2025 Youssef Hussein. All rights reserved.</p>
+        </div>
+    </footer>
+
+
+
+
+
+
+    <!-- JavaScript -->
+    <script>
+        // Mobile Menu Toggle
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        
+        menuToggle.addEventListener('click', function() {
+            navLinks.classList.toggle('show');
+        });
+        
+        // Tabs Functionality
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        const tabContents = document.querySelectorAll('.tab-content');
+        
+        tabBtns.forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                // Remove active class from all buttons and contents
+                tabBtns.forEach(function(btn) {
+                    btn.classList.remove('active');
+                });
+                
+                tabContents.forEach(function(content) {
+                    content.classList.remove('active');
+                });
+                
+                // Add active class to current button
+                this.classList.add('active');
+                
+                // Show corresponding content
+                const tabId = this.getAttribute('data-tab');
+                document.getElementById(tabId + '-tab').classList.add('active');
+            });
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Form submission
+        const contactForm = document.getElementById('contactForm');
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('Thank you for your message. I will get back to you soon!');
+                this.reset();
+            });
+        }
+    </script>
+</body>
+</html>
